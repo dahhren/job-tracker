@@ -14,6 +14,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-4">
         <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard/applications">Applications</Link>
 
         {!isSignedIn ? (
           <SignInButton mode="modal">
