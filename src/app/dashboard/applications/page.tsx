@@ -46,16 +46,25 @@ export default async function ApplicationsPage() {
       <p className="text-sm text-gray-500">{app.status}</p>
     </div>
 
-    <form action={deleteApplication}>
-      <input type="hidden" name="applicationId" value={app.id} />
+    <div className="flex gap-2">
+  <Link
+    href={`/dashboard/applications/${app.id}/edit`}
+    className="rounded border px-3 py-1 text-sm"
+  >
+    Edit
+  </Link>
 
-      <button
-        type="submit"
-        className="rounded border px-3 py-1 text-sm text-red-600"
-      >
-        Delete
-      </button>
-    </form>
+  <form action={deleteApplication}>
+    <input type="hidden" name="applicationId" value={app.id} />
+
+    <button
+      type="submit"
+      className="rounded border px-3 py-1 text-sm text-red-600"
+    >
+      Delete
+    </button>
+  </form>
+</div>
   </div>
 ))
         )}

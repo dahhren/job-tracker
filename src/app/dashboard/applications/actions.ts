@@ -51,3 +51,36 @@ export async function deleteApplication(formData: FormData) {
 
   redirect("/dashboard/applications");
 }
+
+export async function updateApplication(formData: FormData) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+
+  const applicationId = formData.get("applicationId") as string;
+  const company = formData.get("company") as string;
+  const role = formData.get("role") as string;
+  const location = formData.get("location") as string;
+  const status = formData.get("status") as string;
+  const jobUrl = formData.get("jobUrl") as string;
+  const notes = formData.get("notes") as string;
+
+  await prisma.jobApplication.updateMany({
+    where: {
+      id: applicationId,
+      userId,
+    },
+    data: {
+      company,
+      role,
+      location,
+      status,
+      jobUrl,
+      notes,
+    },
+  });
+
+  redirect("/dashboard/applications");
+}
