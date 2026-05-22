@@ -8,6 +8,7 @@ type ApplicationsPageProps = {
   searchParams: Promise<{
     status?: string;
     search?: string;
+    sort?: string;
   }>;
 };
 
@@ -15,7 +16,7 @@ export default async function ApplicationsPage({
   searchParams,
 }: ApplicationsPageProps) {
   const { userId } = await auth();
-  const { status, search } = await searchParams;
+  const { status, search, sort } = await searchParams;
 
   if (!userId) {
     return <div className="p-6">You must be signed in.</div>;
@@ -49,7 +50,7 @@ export default async function ApplicationsPage({
         : {}),
     },
     orderBy: {
-      createdAt: "desc",
+      appliedDate: sort === "oldest" ? "asc" : "desc",
     },
   });
 
@@ -91,6 +92,15 @@ export default async function ApplicationsPage({
           <option>Offer</option>
         </select>
 
+        <select 
+            name="sort"
+            defaultValue={sort ?? "newest"}
+            className="rounded border p-2"
+        >
+          <option value="newest">Newest Applied</option>
+          <option value="oldest">Oldest Applied</option>
+        </select>
+
         <button
           type="submit"
           className="rounded bg-black px-4 py-2 text-white"
@@ -124,6 +134,8 @@ export default async function ApplicationsPage({
                 <div className="mt-2 flex flex-wrap gap-2 text-sm text-gray-500">
                   {app.location && <span>{app.location}</span>}
                   {app.location && <span>•</span>}
+                  <span>Applied: {app.appliedDate.toLocaleDateString()}</span>
+                  <span>•</span>
                   <StatusBadge status={app.status} />
                 </div>
 

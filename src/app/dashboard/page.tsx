@@ -64,7 +64,7 @@ export default async function Dashboard() {
 
   return (
     <main className="p-6">
-      <section className="rounded-2xl border bg-gradient-to-r from-gray-900 to-gray-700 p-8 text-white">
+      <section className="rounded-2xl border bg-linear-to-r from-gray-900 to-gray-700 p-8 text-white">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
             <h1 className="text-4xl font-bold">Job Search Dashboard</h1>

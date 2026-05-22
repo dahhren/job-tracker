@@ -50,6 +50,15 @@ export default function NewApplicationPage() {
         </div>
 
         <div>
+          <label className="block text-sm font-medium">Applied Date</label>
+          <input
+            type="date"
+            name="appliedDate"
+            className="mt-1 w-full rounded border p-2"
+          />
+        </div>
+
+        <div>
           <label className="block text-sm font-medium">Job URL</label>
           <input
             name="jobUrl"

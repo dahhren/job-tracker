@@ -81,6 +81,16 @@ export default async function EditApplicationPage({
         </div>
 
         <div>
+          <label className="block text-sm font-medium">Applied Date</label>
+          <input
+            type="date"
+            name="appliedDate"
+            defaultValue={application.appliedDate?.toISOString().split("T")[0]}
+            className="mt-1 w-full rounded border p-2"
+          />
+        </div>
+
+        <div>
           <label className="block text-sm font-medium">Job URL</label>
           <input
             name="jobUrl"

@@ -17,6 +17,7 @@ export async function createApplication(formData: FormData) {
   const status = formData.get("status") as string;
   const jobUrl = formData.get("jobUrl") as string;
   const notes = formData.get("notes") as string;
+  const appliedDate = formData.get("appliedDate") as string;
 
   await prisma.jobApplication.create({
     data: {
@@ -27,6 +28,9 @@ export async function createApplication(formData: FormData) {
       status,
       jobUrl,
       notes,
+      appliedDate: appliedDate
+        ? new Date(appliedDate)
+        : new Date(),
     },
   });
 
@@ -66,6 +70,7 @@ export async function updateApplication(formData: FormData) {
   const status = formData.get("status") as string;
   const jobUrl = formData.get("jobUrl") as string;
   const notes = formData.get("notes") as string;
+  const appliedDate = formData.get("appliedDate") as string;
 
   await prisma.jobApplication.updateMany({
     where: {
@@ -79,6 +84,9 @@ export async function updateApplication(formData: FormData) {
       status,
       jobUrl,
       notes,
+      appliedDate: appliedDate
+        ? new Date(appliedDate)
+        : new Date(),
     },
   });
 
