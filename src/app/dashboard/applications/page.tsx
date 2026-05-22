@@ -2,7 +2,7 @@ import Link from "next/link";
 import StatusBadge from "@/components/StatusBadge";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
-import { deleteApplication } from "./actions";
+import DeleteApplicationButton from "@/components/DeleteApplicationButton";
 
 type ApplicationsPageProps = {
   searchParams: Promise<{
@@ -158,16 +158,7 @@ export default async function ApplicationsPage({
                   Edit
                 </Link>
 
-                <form action={deleteApplication}>
-                  <input type="hidden" name="applicationId" value={app.id} />
-
-                  <button
-                    type="submit"
-                    className="rounded border px-3 py-1 text-sm text-red-600"
-                  >
-                    Delete
-                  </button>
-                </form>
+                <DeleteApplicationButton applicationId={app.id} />
               </div>
             </div>
           ))
