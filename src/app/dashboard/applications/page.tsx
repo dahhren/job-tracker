@@ -3,8 +3,18 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { deleteApplication } from "./actions";
 
-export default async function ApplicationsPage() {
+type ApplicationsPageProps = {
+  searchParams: Promise<{
+    status?: string;
+    search?: string;
+  }>;
+};
+
+export default async function ApplicationsPage({
+  searchParams,
+}: ApplicationsPageProps) {
   const { userId } = await auth();
+  const { status, search } = await searchParams;
 
   if (!userId) {
     return <div className="p-6">You must be signed in.</div>;
@@ -13,6 +23,29 @@ export default async function ApplicationsPage() {
   const applications = await prisma.jobApplication.findMany({
     where: {
       userId,
+      ...(status && status !== "All"
+        ? {
+            status,
+          }
+        : {}),
+      ...(search
+        ? {
+            OR: [
+              {
+                company: {
+                  contains: search,
+                  mode: "insensitive",
+                },
+              },
+              {
+                role: {
+                  contains: search,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          }
+        : {}),
     },
     orderBy: {
       createdAt: "desc",
@@ -21,52 +54,110 @@ export default async function ApplicationsPage() {
 
   return (
     <main className="p-6">
-    <div className="flex items-center justify-between">
-      <h1 className="text-3xl font-bold">Applications</h1>
-        <Link
-            href="/dashboard/applications/new"
-            className="rounded bg-black px-4 py-2 text-white"
-        >
-            Add Application
-        </Link>
-    </div> 
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Applications</h1>
+          <p className="mt-1 text-gray-500">
+            Manage and track your job applications.
+          </p>
+        </div>
 
-      <div className="mt-6 rounded-lg border">
+        <Link
+          href="/dashboard/applications/new"
+          className="rounded bg-black px-4 py-2 text-white"
+        >
+          Add Application
+        </Link>
+      </div>
+
+      <form className="mt-6 flex flex-col gap-3 md:flex-row">
+        <input
+          name="search"
+          defaultValue={search ?? ""}
+          placeholder="Search company or role..."
+          className="w-full rounded border p-2 md:max-w-sm"
+        />
+
+        <select
+          name="status"
+          defaultValue={status ?? "All"}
+          className="rounded border p-2"
+        >
+          <option>All</option>
+          <option>Applied</option>
+          <option>Interview</option>
+          <option>Rejected</option>
+          <option>Offer</option>
+        </select>
+
+        <button
+          type="submit"
+          className="rounded bg-black px-4 py-2 text-white"
+        >
+          Filter
+        </button>
+
+        <Link
+          href="/dashboard/applications"
+          className="rounded border px-4 py-2 text-center"
+        >
+          Reset
+        </Link>
+      </form>
+
+      <div className="mt-6 space-y-3">
         {applications.length === 0 ? (
-          <p className="p-4 text-gray-500">No applications yet.</p>
+          <div className="rounded-lg border p-6 text-gray-500">
+            No applications found.
+          </div>
         ) : (
           applications.map((app) => (
-  <div
-    key={app.id}
-    className="flex items-center justify-between border-b p-4"
-  >
-    <div>
-      <h2 className="font-semibold">{app.role}</h2>
-      <p>{app.company}</p>
-      <p className="text-sm text-gray-500">{app.status}</p>
-    </div>
+            <div
+              key={app.id}
+              className="flex flex-col justify-between gap-4 rounded-lg border p-4 md:flex-row md:items-center"
+            >
+              <div>
+                <h2 className="text-lg font-semibold">{app.role}</h2>
+                <p className="text-gray-700">{app.company}</p>
 
-    <div className="flex gap-2">
-  <Link
-    href={`/dashboard/applications/${app.id}/edit`}
-    className="rounded border px-3 py-1 text-sm"
-  >
-    Edit
-  </Link>
+                <div className="mt-2 flex flex-wrap gap-2 text-sm text-gray-500">
+                  {app.location && <span>{app.location}</span>}
+                  <span>•</span>
+                  <span>{app.status}</span>
+                </div>
 
-  <form action={deleteApplication}>
-    <input type="hidden" name="applicationId" value={app.id} />
+                {app.jobUrl && (
+                  <a
+                    href={app.jobUrl}
+                    target="_blank"
+                    className="mt-2 inline-block text-sm underline"
+                  >
+                    View Job Posting
+                  </a>
+                )}
+              </div>
 
-    <button
-      type="submit"
-      className="rounded border px-3 py-1 text-sm text-red-600"
-    >
-      Delete
-    </button>
-  </form>
-</div>
-  </div>
-))
+              <div className="flex gap-2">
+                <Link
+                  href={`/dashboard/applications/${app.id}/edit`}
+                  className="rounded border px-3 py-1 text-sm"
+                >
+                  Edit
+                </Link>
+
+                <form action={deleteApplication}>
+                  <input type="hidden" name="applicationId" value={app.id} />
+
+                  <button
+                    type="submit"
+                    className="rounded border px-3 py-1 text-sm text-red-600"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </div>
+          ))
         )}
       </div>
     </main>
