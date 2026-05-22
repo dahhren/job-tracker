@@ -7,24 +7,34 @@ export default function Navbar() {
   const { isSignedIn } = useUser();
 
   return (
-    <nav className="flex items-center justify-between border-b p-4">
-      <Link href="/" className="font-bold text-xl">
-        JobTracker
-      </Link>
+    <nav className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="text-xl font-bold">
+          JobTracker
+        </Link>
 
-      <div className="flex items-center gap-4">
-        <Link href="/dashboard">Dashboard</Link>
-        <Link href="/dashboard/applications">Applications</Link>
+        <div className="flex items-center gap-4">
+          <Link href="/dashboard" className="text-sm text-gray-600 hover:text-black">
+            Dashboard
+          </Link>
 
-        {!isSignedIn ? (
-          <SignInButton mode="modal">
-            <button className="rounded bg-black px-4 py-2 text-white">
-              Sign In
-            </button>
-          </SignInButton>
-        ) : (
-          <UserButton />
-        )}
+          <Link
+            href="/dashboard/applications"
+            className="text-sm text-gray-600 hover:text-black"
+          >
+            Applications
+          </Link>
+
+          {!isSignedIn ? (
+            <SignInButton mode="modal">
+              <button className="rounded bg-black px-4 py-2 text-sm text-white">
+                Sign In
+              </button>
+            </SignInButton>
+          ) : (
+            <UserButton />
+          )}
+        </div>
       </div>
     </nav>
   );
