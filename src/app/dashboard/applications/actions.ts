@@ -92,3 +92,26 @@ export async function updateApplication(formData: FormData) {
 
   redirect("/dashboard/applications");
 }
+
+export async function updateApplicationStatus(formData: FormData) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+
+  const applicationId = formData.get("applicationId") as string;
+  const status = formData.get("status") as string;
+
+  await prisma.jobApplication.updateMany({
+    where: {
+      id: applicationId,
+      userId,
+    },
+    data: {
+      status,
+    },
+  });
+
+  redirect("/dashboard/applications");
+}

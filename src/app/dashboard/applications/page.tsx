@@ -3,6 +3,7 @@ import StatusBadge from "@/components/StatusBadge";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import DeleteApplicationButton from "@/components/DeleteApplicationButton";
+import StatusSelect from "@/components/StatusSelect";
 
 type ApplicationsPageProps = {
   searchParams: Promise<{
@@ -72,7 +73,7 @@ export default async function ApplicationsPage({
         </Link>
       </div>
 
-      <form className="mt-6 flex flex-col gap-3 md:flex-row">
+      <form className="mt-6 grid gap-3 md:grid-cols-[1fr_180px_160px_auto_auto]">
         <input
           name="search"
           defaultValue={search ?? ""}
@@ -118,9 +119,19 @@ export default async function ApplicationsPage({
 
       <div className="mt-6 space-y-3">
         {applications.length === 0 ? (
-          <div className="rounded-lg border p-6 text-gray-500">
-            No applications found.
-          </div>
+            <div className="rounded-xl border border-dashed p-10 text-center">
+                <h2 className="text-lg font-semibold">No applications found</h2>
+                <p className="mt-2 text-gray-500">
+                    Add a new application or adjust your search and filters.
+                </p>
+
+                <Link
+                    href="/dashboard/applications/new"
+                    className="mt-4 inline-block rounded bg-black px-4 py-2 text-white"
+                >
+                    Add Application
+                </Link>
+            </div>
         ) : (
           applications.map((app) => (
             <div
@@ -136,8 +147,9 @@ export default async function ApplicationsPage({
                   {app.location && <span>•</span>}
                   <span>Applied: {app.appliedDate.toLocaleDateString()}</span>
                   <span>•</span>
-                  <StatusBadge status={app.status} />
+                  <StatusSelect applicationId={app.id} currentStatus={app.status} />
                 </div>
+
 
                 {app.jobUrl && (
                   <a
@@ -150,7 +162,7 @@ export default async function ApplicationsPage({
                 )}
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Link
                   href={`/dashboard/applications/${app.id}/edit`}
                   className="rounded border px-3 py-1 text-sm"

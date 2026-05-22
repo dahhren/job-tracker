@@ -83,7 +83,7 @@ export default async function Dashboard() {
         </div>
       </section>
 
-      <section className="mt-6 grid gap-4 md:grid-cols-5">
+      <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {stats.map((stat) => (
           <div key={stat.label} className="rounded-xl border p-5">
             <h2 className="font-medium text-gray-500">{stat.label}</h2>
