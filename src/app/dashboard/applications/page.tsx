@@ -1,4 +1,5 @@
 import Link from "next/link";
+import StatusBadge from "@/components/StatusBadge";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { deleteApplication } from "./actions";
@@ -122,8 +123,8 @@ export default async function ApplicationsPage({
 
                 <div className="mt-2 flex flex-wrap gap-2 text-sm text-gray-500">
                   {app.location && <span>{app.location}</span>}
-                  <span>•</span>
-                  <span>{app.status}</span>
+                  {app.location && <span>•</span>}
+                  <StatusBadge status={app.status} />
                 </div>
 
                 {app.jobUrl && (
