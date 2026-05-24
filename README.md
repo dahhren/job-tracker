@@ -34,5 +34,4 @@ Screenshots will be added after deployment.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/job-tracker.git
-# Make sure you replace "YOUR_USERNAME" with obviously, your username.
+git clone https://github.com/dahhren/job-tracker.git
