@@ -1,9 +1,9 @@
 import Link from "next/link";
 import StatusBadge from "@/components/StatusBadge";
+import StatusSelect from "@/components/StatusSelect";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import DeleteApplicationButton from "@/components/DeleteApplicationButton";
-import StatusSelect from "@/components/StatusSelect";
 
 type ApplicationsPageProps = {
   searchParams: Promise<{
@@ -57,7 +57,7 @@ export default async function ApplicationsPage({
 
   return (
     <main className="p-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold">Applications</h1>
           <p className="mt-1 text-gray-500">
@@ -147,14 +147,19 @@ export default async function ApplicationsPage({
                   {app.location && <span>•</span>}
                   <span>Applied: {app.appliedDate.toLocaleDateString()}</span>
                   <span>•</span>
-                  <StatusSelect applicationId={app.id} currentStatus={app.status} />
+                  <span>Updated: {app.updatedAt.toLocaleDateString()}</span>
                 </div>
 
+                <div>
+                    <StatusBadge status={app.status} />
+                    <StatusSelect applicationId={app.id} currentStatus={app.status} />
+                </div>
 
                 {app.jobUrl && (
                   <a
                     href={app.jobUrl}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-2 inline-block text-sm underline"
                   >
                     View Job Posting

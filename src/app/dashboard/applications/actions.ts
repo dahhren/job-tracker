@@ -34,6 +34,10 @@ export async function createApplication(formData: FormData) {
     },
   });
 
+  if (!company.trim() || !role.trim()) {
+  throw new Error("Company and role are required.");
+}
+
   redirect("/dashboard/applications");
 }
 
@@ -90,6 +94,10 @@ export async function updateApplication(formData: FormData) {
     },
   });
 
+  if (!company.trim() || !role.trim()) {
+  throw new Error("Company and role are required.");
+}
+
   redirect("/dashboard/applications");
 }
 
@@ -115,3 +123,4 @@ export async function updateApplicationStatus(formData: FormData) {
 
   redirect("/dashboard/applications");
 }
+

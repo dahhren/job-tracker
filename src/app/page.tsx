@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
+      {/* Hero Section */}
       <section className="mx-auto flex min-h-[85vh] max-w-6xl flex-col items-center justify-center px-6 text-center">
         <div className="rounded-full border px-4 py-2 text-sm text-gray-600">
           Job search organization made simple
@@ -53,6 +54,45 @@ export default function Home() {
             <p className="mt-2 text-gray-500">
               View dashboard counts and understand your job search pipeline.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <div className="rounded-2xl border p-8">
+          <h2 className="text-2xl font-bold">
+            Built with a modern full-stack architecture
+          </h2>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-4">
+            <div className="rounded-lg border p-4">
+              <h3 className="font-semibold">Frontend</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Next.js, React, TypeScript, Tailwind CSS
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4">
+              <h3 className="font-semibold">Authentication</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Clerk user authentication and protected routes
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4">
+              <h3 className="font-semibold">Database</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                PostgreSQL database hosted on Supabase
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4">
+              <h3 className="font-semibold">ORM</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Prisma for schema management and database queries
+              </p>
+            </div>
           </div>
         </div>
       </section>
