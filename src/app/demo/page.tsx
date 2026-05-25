@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { demoApplications } from "@/lib/demoData";
 import StatusBadge from "@/components/StatusBadge";
+import StatusChart from "@/components/StatusChart";
+import ApplicationsOverTimeChart from "@/components/ApplicationsOverTimeChart";
 
 export default function DemoPage() {
   const total = demoApplications.length;
@@ -14,6 +16,43 @@ export default function DemoPage() {
   const applied = demoApplications.filter(
     (app) => app.status === "Applied"
   ).length;
+
+  const statusChartData = [
+  {
+    status: "Applied",
+    count: applied,
+  },
+  {
+    status: "Interview",
+    count: interviews,
+  },
+  {
+    status: "Rejected",
+    count: rejected,
+  },
+  {
+    status: "Offer",
+    count: offers,
+  },
+];
+
+const applicationsByDate = demoApplications.reduce<Record<string, number>>(
+  (acc, app) => {
+    const date = new Date(app.appliedDate).toLocaleDateString();
+
+    acc[date] = (acc[date] || 0) + 1;
+
+    return acc;
+  },
+  {}
+);
+
+const applicationsOverTimeData = Object.entries(applicationsByDate).map(
+  ([date, count]) => ({
+    date,
+    count,
+  })
+);
 
   const recentApplications = demoApplications.slice(0, 3);
 
@@ -62,6 +101,30 @@ export default function DemoPage() {
           <p className="mt-2 text-3xl font-bold">{rejected}</p>
         </div>
       </section>
+
+        <section className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-xl border p-6">
+                <h2 className="text-xl font-semibold">Applications by Status</h2>
+                <p className="mt-1 text-sm text-gray-500">
+                    Sample breakdown of a job search pipeline.
+                </p>
+
+                <div className="mt-6">
+                    <StatusChart data={statusChartData} />
+                </div>
+            </div>
+
+            <div className="rounded-xl border p-6">
+                <h2 className="text-xl font-semibold">Applications Over Time</h2>
+                <p className="mt-1 text-sm text-gray-500">
+                    Sample application activity by date.
+                </p>
+
+                <div className="mt-6">
+                    <ApplicationsOverTimeChart data={applicationsOverTimeData} />
+                </div>
+            </div>
+        </section>
 
       <section className="mt-8 rounded-xl border p-6">
         <div className="flex items-center justify-between">

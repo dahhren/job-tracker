@@ -2,6 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import StatusBadge from "@/components/StatusBadge";
+import StatusChart from "@/components/StatusChart";
+import ApplicationsOverTimeChart from "@/components/ApplicationsOverTimeChart";
 
 export default async function Dashboard() {
   const { userId } = await auth();
@@ -62,6 +64,27 @@ export default async function Dashboard() {
     },
   ];
 
+  const statusData = [
+    { status: "Applied", count: applied },
+    { status: "Interviews", count: interviews },
+    { status: "Rejected", count: rejected },
+    { status: "Offer", count: offers },
+  ];
+
+  const applicationsByDate = applications.reduce<Record<string, number>>(
+    (acc, app) => {
+      const date = app.appliedDate.toLocaleDateString();
+
+      acc[date] = (acc[date] || 0) +1;
+      return acc;
+    },
+    {}
+  );
+
+  const applicationsOverTimeChartData = Object.entries(applicationsByDate).map(
+    ([date, count]) => ({ date, count })
+  );
+
   return (
     <main className="p-6">
       <section className="rounded-2xl border bg-linear-to-r from-gray-900 to-gray-700 p-8 text-white">
@@ -91,6 +114,30 @@ export default async function Dashboard() {
           </div>
         ))}
       </section>
+
+      <section className="mt-8 grid gap-6 lg:grid-cols-2">
+        <div className="rounded-xl border p-6">
+          <h2 className="text-xl font-semibold">Applications by Status</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Breakdown of your job search pipeline.
+          </p>
+
+          <div className="mt-6">
+            <StatusChart data={statusData} />
+          </div>
+        </div>
+
+        <div className="rounded-xl border p-6">
+          <h2 className="text-xl font-semibold">Applications Over Time</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Number of applications submitted by date.
+          </p>
+
+          <div className="mt-6">
+            <ApplicationsOverTimeChart data={applicationsOverTimeChartData} />
+          </div>
+        </div>
+      </section>    
 
       <section className="mt-8 rounded-xl border p-6">
         <div className="flex items-center justify-between">
