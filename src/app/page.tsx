@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+<head> <meta name="google-site-verification" content="4R-cISbZUnpF3YHRZ-rtPyIbuf62w1LJ5ufOLHGqlts" /></head>
 export default function Home() {
   return (
     <main>
@@ -98,4 +98,4 @@ export default function Home() {
       </section>
     </main>
   );
-}
+} 
