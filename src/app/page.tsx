@@ -20,6 +20,13 @@ export default function Home() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
+            href="/demo"
+            className="rounded bg-black px-6 py-3 font-medium text-white"
+          >
+            View Demo
+          </Link>
+
+          <Link
             href="/dashboard"
             className="rounded bg-black px-6 py-3 font-medium text-white"
           >
