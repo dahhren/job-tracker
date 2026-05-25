@@ -7,8 +7,8 @@ export const demoApplications = [
         status: "Applied",
         jobUrl: "https://shopify.com/careers/",
         notes: "Applied through company careers page. Highlighted react and typescript experience.",
-        appliedDate: "2024-05-01",
-        updatedDate: "2024-05-02",
+        appliedDate: "2026-05-01",
+        updatedDate: "2026-05-02",
     },
     {
         id: "2",
@@ -42,7 +42,7 @@ export const demoApplications = [
         notes: "Received offer with competitive salary and great benefits. Need to decide by end of month.",
         appliedDate: "2026-05-12",
         updatedDate: "2026-05-19",
-    }
+    },
     {
         id: "5",
         company: "Air Canada",
