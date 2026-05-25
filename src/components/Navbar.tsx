@@ -7,7 +7,7 @@ export default function Navbar() {
   const { isSignedIn } = useUser();
 
   return (
-    <nav className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+    <nav className="sticky top-0 z-50 border-b bg-cyan-600 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="text-xl font-bold">
           JobTracker
