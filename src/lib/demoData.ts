@@ -43,4 +43,15 @@ export const demoApplications = [
         appliedDate: "2026-05-12",
         updatedDate: "2026-05-19",
     }
+    {
+        id: "5",
+        company: "Air Canada",
+        role: "Data Analyst",
+        location: "Vancouver, BC",
+        status: "Applied",
+        jobUrl: "https://www.aircanada.ca/careers/",
+        notes: "Applied through company careers page. Highlighted analytical skills and experience with SQL.",
+        appliedDate: "2026-02-20",
+        updatedDate: "2026-02-22",
+    }
 ];
