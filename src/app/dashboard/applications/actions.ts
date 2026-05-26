@@ -38,7 +38,7 @@ export async function createApplication(formData: FormData) {
   throw new Error("Company and role are required.");
 }
 
-  redirect("/dashboard/applications");
+  redirect("/dashboard/applications?success=created");
 }
 
 export async function deleteApplication(formData: FormData) {
@@ -57,7 +57,7 @@ export async function deleteApplication(formData: FormData) {
     },
   });
 
-  redirect("/dashboard/applications");
+  redirect("/dashboard/applications?success=deleted");
 }
 
 export async function updateApplication(formData: FormData) {
@@ -98,7 +98,7 @@ export async function updateApplication(formData: FormData) {
   throw new Error("Company and role are required.");
 }
 
-  redirect("/dashboard/applications");
+  redirect("/dashboard/applications?success=updated");
 }
 
 export async function updateApplicationStatus(formData: FormData) {
@@ -121,6 +121,6 @@ export async function updateApplicationStatus(formData: FormData) {
     },
   });
 
-  redirect("/dashboard/applications");
+  redirect("/dashboard/applications?success=status-updated");
 }
 

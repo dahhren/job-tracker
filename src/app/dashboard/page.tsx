@@ -1,5 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
+import { Suspense } from "react";
+import ToastHandler from "@/components/ToastHandler";
 import Link from "next/link";
 import StatusBadge from "@/components/StatusBadge";
 import StatusChart from "@/components/StatusChart";
@@ -87,6 +89,9 @@ export default async function Dashboard() {
 
   return (
     <main className="p-6">
+      <Suspense fallback={null}>
+        <ToastHandler />
+      </Suspense>
       <section className="rounded-2xl border bg-linear-to-r from-gray-900 to-gray-700 p-8 text-white">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
