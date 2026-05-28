@@ -119,19 +119,34 @@ export default async function ApplicationsPage({
 
       <div className="mt-6 space-y-3">
         {applications.length === 0 ? (
-            <div className="rounded-xl border border-dashed p-10 text-center">
-                <h2 className="text-lg font-semibold">No applications found</h2>
-                <p className="mt-2 text-gray-500">
-                    Add a new application or adjust your search and filters.
-                </p>
+            <div className="rounded-2xl border border-dashed bg-gray-50 p-10 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
+                <span className="text-xl">💼</span>
+              </div>
 
-                <Link
-                    href="/dashboard/applications/new"
-                    className="mt-4 inline-block rounded bg-black px-4 py-2 text-white"
-                >
-                    Add Application
-                </Link>
+            <h2 className="mt-4 text-xl font-semibold">No applications found</h2>
+
+            <p className="mx-auto mt-2 max-w-md text-gray-500">
+              Start by adding your first job application, or adjust your current search and
+              filters to find existing applications.
+            </p>
+
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                href="/dashboard/applications/new"
+                className="rounded bg-black px-4 py-2 text-white"
+              >
+                Add Application
+              </Link>
+
+              <Link
+                href="/dashboard"
+                className="rounded border bg-white px-4 py-2"
+              >
+                Back to Dashboard
+              </Link>
             </div>
+          </div>
         ) : (
           applications.map((app) => (
             <div

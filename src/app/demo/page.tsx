@@ -3,6 +3,7 @@ import { demoApplications } from "@/lib/demoData";
 import StatusBadge from "@/components/StatusBadge";
 import StatusChart from "@/components/StatusChart";
 import ApplicationsOverTimeChart from "@/components/ApplicationsOverTimeChart";
+import DemoBanner from "@/components/DemoBanner";
 
 export default function DemoPage() {
   const total = demoApplications.length;
@@ -58,6 +59,7 @@ const applicationsOverTimeData = Object.entries(applicationsByDate).map(
 
   return (
     <main className="mx-auto max-w-6xl p-6">
+      <DemoBanner />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-medium text-gray-500">Demo Mode</p>
