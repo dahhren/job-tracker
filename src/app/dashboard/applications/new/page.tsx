@@ -1,11 +1,12 @@
 import { createApplication } from "../actions";
+import DatePickerButton from "@/components/DatePickerButton";
 
 export default function NewApplicationPage() {
   return (
     <main className="mx-auto max-w-2xl p-6">
       <h1 className="text-3xl font-bold">Add Job Application</h1>
 
-      <form action={createApplication} className="mt-6 space-y-4">
+      <form action={createApplication} autoComplete="off" className="mt-6 space-y-4">
         <div>
           <label className="block text-sm font-medium">Company</label>
           <input
@@ -13,6 +14,7 @@ export default function NewApplicationPage() {
             required
             className="mt-1 w-full rounded border p-2"
             placeholder="Google"
+            autoComplete="off"
           />
         </div>
 
@@ -23,6 +25,7 @@ export default function NewApplicationPage() {
             required
             className="mt-1 w-full rounded border p-2"
             placeholder="Frontend Developer"
+            autoComplete="off"
           />
         </div>
 
@@ -32,6 +35,7 @@ export default function NewApplicationPage() {
             name="location"
             className="mt-1 w-full rounded border p-2"
             placeholder="Toronto, ON"
+            autoComplete="off"
           />
         </div>
 
@@ -51,11 +55,7 @@ export default function NewApplicationPage() {
 
         <div>
           <label className="block text-sm font-medium">Applied Date</label>
-          <input
-            type="date"
-            name="appliedDate"
-            className="mt-1 w-full rounded border p-2"
-          />
+          <DatePickerButton name="appliedDate" />
         </div>
 
         <div>
@@ -64,6 +64,7 @@ export default function NewApplicationPage() {
             name="jobUrl"
             className="mt-1 w-full rounded border p-2"
             placeholder="https://company.com/careers/job"
+            autoComplete="off"
           />
         </div>
 
@@ -74,6 +75,7 @@ export default function NewApplicationPage() {
             className="mt-1 w-full rounded border p-2"
             placeholder="Notes about the application..."
             rows={4}
+            autoComplete="off"
           />
         </div>
 

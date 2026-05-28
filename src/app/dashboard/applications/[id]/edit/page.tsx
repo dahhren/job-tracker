@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { updateApplication } from "../../actions";
 import { notFound } from "next/navigation";
+import DatePickerButton from "@/components/DatePickerButton";
 
 type EditApplicationPageProps = {
   params: Promise<{
@@ -34,7 +35,7 @@ export default async function EditApplicationPage({
     <main className="mx-auto max-w-2xl p-6">
       <h1 className="text-3xl font-bold">Edit Application</h1>
 
-      <form action={updateApplication} className="mt-6 space-y-4">
+      <form action={updateApplication} autoComplete="off" className="mt-6 space-y-4">
         <input type="hidden" name="applicationId" value={application.id} />
 
         <div>
@@ -44,6 +45,7 @@ export default async function EditApplicationPage({
             required
             defaultValue={application.company}
             className="mt-1 w-full rounded border p-2"
+            autoComplete="off"
           />
         </div>
 
@@ -54,6 +56,7 @@ export default async function EditApplicationPage({
             required
             defaultValue={application.role}
             className="mt-1 w-full rounded border p-2"
+            autoComplete="off"
           />
         </div>
 
@@ -63,6 +66,7 @@ export default async function EditApplicationPage({
             name="location"
             defaultValue={application.location ?? ""}
             className="mt-1 w-full rounded border p-2"
+            autoComplete="off"
           />
         </div>
 
@@ -82,12 +86,12 @@ export default async function EditApplicationPage({
 
         <div>
           <label className="block text-sm font-medium">Applied Date</label>
-          <input
-            type="date"
-            name="appliedDate"
-            defaultValue={application.appliedDate?.toISOString().split("T")[0]}
-            className="mt-1 w-full rounded border p-2"
-          />
+          <div className="mt-1">
+            <DatePickerButton
+              name="appliedDate"
+              defaultValue={application.appliedDate.toISOString().split("T")[0]}
+            />
+          </div>
         </div>
 
         <div>
@@ -96,6 +100,7 @@ export default async function EditApplicationPage({
             name="jobUrl"
             defaultValue={application.jobUrl ?? ""}
             className="mt-1 w-full rounded border p-2"
+            autoComplete="off"
           />
         </div>
 
@@ -106,6 +111,7 @@ export default async function EditApplicationPage({
             defaultValue={application.notes ?? ""}
             className="mt-1 w-full rounded border p-2"
             rows={4}
+            autoComplete="off"
           />
         </div>
 
