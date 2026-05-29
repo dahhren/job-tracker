@@ -24,7 +24,7 @@ export default function StatusChart({ data }: StatusChartProps) {
                     <XAxis dataKey="status" />
                     <YAxis allowDecimals={false} />
                     <Tooltip />
-                    <Bar dataKey="count" fill="#ffccd3" />
+                    <Bar dataKey="count" fill="#06b6d4" radius={[8, 8, 0, 0]} />
                 </BarChart>
             </ResponsiveContainer>
         </div>

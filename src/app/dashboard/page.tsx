@@ -86,12 +86,12 @@ export default async function Dashboard() {
   );
 
   return (
-    <main className="p-6">
-      <section className="rounded-2xl border bg-linear-to-r from-gray-900 to-gray-700 p-8 text-white">
+    <main className="min-h-screen bg-slate-950 text-white p-6">
+      <section className="rounded-2xl border border-slate-800 bg-linear-to-r from-slate-900 to-slate-800 p-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
             <h1 className="text-4xl font-bold">Job Search Dashboard</h1>
-            <p className="mt-2 max-w-xl text-gray-200">
+            <p className="mt-2 max-w-xl text-slate-300">
               Track applications, interviews, rejections, and offers in one
               organized workspace.
             </p>
@@ -99,7 +99,7 @@ export default async function Dashboard() {
 
           <Link
             href="/dashboard/applications/new"
-            className="w-fit rounded bg-white px-4 py-2 font-medium text-black"
+            className="w-fit rounded bg-cyan-500 px-4 py-2 font-medium text-white hover:bg-cyan-600"
           >
             Add Application
           </Link>
@@ -108,17 +108,20 @@ export default async function Dashboard() {
 
       <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {stats.map((stat) => (
-          <div key={stat.label} className="rounded-xl border p-5">
-            <h2 className="font-medium text-gray-500">{stat.label}</h2>
+          <div
+            key={stat.label}
+            className="rounded-xl border border-slate-800 bg-slate-900 p-5"
+          >
+            <h2 className="font-medium text-slate-400">{stat.label}</h2>
             <p className="mt-2 text-3xl font-bold">{stat.value}</p>
           </div>
         ))}
       </section>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border p-6">
+        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-xl font-semibold">Applications by Status</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-slate-400">
             Breakdown of your job search pipeline.
           </p>
 
@@ -127,9 +130,9 @@ export default async function Dashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl border p-6">
+        <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-xl font-semibold">Applications Over Time</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-slate-400">
             Number of applications submitted by date.
           </p>
 
@@ -139,7 +142,7 @@ export default async function Dashboard() {
         </div>
       </section>    
 
-      <section className="mt-8 rounded-xl border p-6">
+      <section className="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Recent Applications</h2>
 
@@ -153,18 +156,18 @@ export default async function Dashboard() {
 
         <div className="mt-4 space-y-3">
           {recentApplications.length === 0 ? (
-            <p className="text-gray-500">
+            <p className="text-slate-400">
               No applications yet. Add your first one to get started.
             </p>
           ) : (
             recentApplications.map((app) => (
               <div
                 key={app.id}
-                className="flex flex-col justify-between gap-3 rounded-lg border p-4 md:flex-row md:items-center"
+                className="flex flex-col justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950 p-4 md:flex-row md:items-center"
               >
                 <div>
                   <h3 className="font-semibold">{app.role}</h3>
-                  <p className="text-sm text-gray-500">{app.company}</p>
+                  <p className="text-sm text-slate-400">{app.company}</p>
                 </div>
 
                 <StatusBadge status={app.status} />

@@ -21,7 +21,7 @@ export default function StatusSelect({
         onChange={(event) => {
             event.currentTarget.form?.requestSubmit();
         }}
-        className="rounded border px-2 py-1 text-sm"
+        className="rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-white"
         >
         <option>Applied</option>
         <option>Interview</option>

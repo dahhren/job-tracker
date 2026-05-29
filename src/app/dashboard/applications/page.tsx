@@ -56,18 +56,18 @@ export default async function ApplicationsPage({
   });
 
   return (
-    <main className="p-6">
+    <main className="min-h-screen bg-slate-950 p-6 text-white">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold">Applications</h1>
-          <p className="mt-1 text-gray-500">
+          <p className="mt-1 text-slate-400">
             Manage and track your job applications.
           </p>
         </div>
 
         <Link
           href="/dashboard/applications/new"
-          className="rounded bg-black px-4 py-2 text-white"
+          className="rounded bg-cyan-500 px-4 py-2 text-white hover:bg-cyan-600"
         >
           Add Application
         </Link>
@@ -78,13 +78,13 @@ export default async function ApplicationsPage({
           name="search"
           defaultValue={search ?? ""}
           placeholder="Search company or role..."
-          className="w-full rounded border p-2 md:max-w-sm"
+          className="w-full rounded border border-slate-700 bg-slate-900 p-2 text-white placeholder:text-slate-500 md:max-w-sm"
         />
 
         <select
           name="status"
           defaultValue={status ?? "All"}
-          className="rounded border p-2"
+          className="rounded border border-slate-700 bg-slate-900 p-2 text-white"
         >
           <option>All</option>
           <option>Applied</option>
@@ -96,7 +96,7 @@ export default async function ApplicationsPage({
         <select 
             name="sort"
             defaultValue={sort ?? "newest"}
-            className="rounded border p-2"
+            className="rounded border border-slate-700 bg-slate-900 p-2 text-white"
         >
           <option value="newest">Newest Applied</option>
           <option value="oldest">Oldest Applied</option>
@@ -104,14 +104,14 @@ export default async function ApplicationsPage({
 
         <button
           type="submit"
-          className="rounded bg-black px-4 py-2 text-white"
+          className="rounded bg-cyan-500 px-4 py-2 text-white hover:bg-cyan-600"
         >
           Filter
         </button>
 
         <Link
           href="/dashboard/applications"
-          className="rounded border px-4 py-2 text-center"
+          className="rounded border border-slate-700 px-4 py-2 text-center text-slate-200 hover:bg-slate-900"
         >
           Reset
         </Link>
@@ -126,7 +126,7 @@ export default async function ApplicationsPage({
 
             <h2 className="mt-4 text-xl font-semibold">No applications found</h2>
 
-            <p className="mx-auto mt-2 max-w-md text-gray-500">
+            <p className="mx-auto mt-2 max-w-md text-slate-400">
               Start by adding your first job application, or adjust your current search and
               filters to find existing applications.
             </p>
@@ -134,7 +134,7 @@ export default async function ApplicationsPage({
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/dashboard/applications/new"
-                className="rounded bg-black px-4 py-2 text-white"
+                className="rounded bg-cyan-500 px-4 py-2 text-white hover:bg-cyan-600"
               >
                 Add Application
               </Link>
@@ -151,13 +151,13 @@ export default async function ApplicationsPage({
           applications.map((app) => (
             <div
               key={app.id}
-              className="flex flex-col justify-between gap-4 rounded-lg border p-4 md:flex-row md:items-center"
+              className="flex flex-col justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900 p-5 md:flex-row md:items-center"
             >
               <div>
                 <h2 className="text-lg font-semibold">{app.role}</h2>
-                <p className="text-gray-700">{app.company}</p>
+                <p className="text-slate-300">{app.company}</p>
 
-                <div className="mt-2 flex flex-wrap gap-2 text-sm text-gray-500">
+                <div className="mt-2 flex flex-wrap gap-2 text-sm text-slate-400">
                   {app.location && <span>{app.location}</span>}
                   {app.location && <span>•</span>}
                   <span>Applied: {app.appliedDate.toLocaleDateString()}</span>
@@ -175,7 +175,7 @@ export default async function ApplicationsPage({
                     href={app.jobUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-block text-sm underline"
+                    className="mt-2 inline-block text-sm text-cyan-300 underline hover:text-cyan-200"
                   >
                     View Job Posting
                   </a>
@@ -185,7 +185,7 @@ export default async function ApplicationsPage({
               <div className="flex flex-wrap gap-2">
                 <Link
                   href={`/dashboard/applications/${app.id}/edit`}
-                  className="rounded border px-3 py-1 text-sm"
+                  className="rounded border border-slate-700 px-3 py-1 text-sm text-slate-200 hover:bg-slate-800"
                 >
                   Edit
                 </Link>

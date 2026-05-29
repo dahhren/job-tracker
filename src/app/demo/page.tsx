@@ -58,7 +58,8 @@ const applicationsOverTimeData = Object.entries(applicationsByDate).map(
   const recentApplications = demoApplications.slice(0, 3);
 
   return (
-    <main className="mx-auto max-w-6xl p-6">
+    <main className="min-h-screen bg-slate-950 p-6 text-white">
+      <div className="mx-auto max-w-6xl">
       <DemoBanner />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -170,6 +171,7 @@ const applicationsOverTimeData = Object.entries(applicationsByDate).map(
           Start Tracking
         </Link>
       </section>
+      </div>
     </main>
   );
 }

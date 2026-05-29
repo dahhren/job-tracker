@@ -62,9 +62,9 @@ const techStack = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-slate-950 text-white">
       <section className="mx-auto flex max-w-6xl flex-col items-center px-6 py-24 text-center sm:py-32">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
           <Sparkles className="h-4 w-4" />
           Full-stack job application tracker
         </div>
@@ -82,14 +82,14 @@ export default function Home() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/demo"
-            className="rounded-lg bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+            className="rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-white transition hover:bg-cyan-600"
           >
             View Demo
           </Link>
 
           <Link
             href="/dashboard"
-            className="rounded-lg border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
           >
             Open Dashboard
           </Link>
@@ -98,36 +98,36 @@ export default function Home() {
             href="https://github.com/dahhren/job-tracker"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
           >
             GitHub Repo
           </a>
         </div>
 
-        <p className="mt-5 text-sm text-gray-400">
+        <p className="mt-5 text-sm text-slate-400">
           Recruiters can use demo mode without creating an account.
         </p>
       </section>
 
-      <section className="border-y border-white/10 bg-white/2">
+      <section className="border-y border-slate-800 bg-slate-900/40">
         <div className="mx-auto grid max-w-6xl gap-4 px-6 py-10 sm:grid-cols-3">
-          <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
             <p className="text-3xl font-bold">CRUD</p>
-            <p className="mt-2 text-sm text-gray-400">
+            <p className="mt-2 text-sm text-slate-400">
               Create, edit, delete, and update job applications.
             </p>
           </div>
 
-          <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
             <p className="text-3xl font-bold">Auth</p>
-            <p className="mt-2 text-sm text-gray-400">
+            <p className="mt-2 text-sm text-slate-400">
               Secure sign-in and protected dashboard routes.
             </p>
           </div>
 
-          <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
             <p className="text-3xl font-bold">Live</p>
-            <p className="mt-2 text-sm text-gray-400">
+            <p className="mt-2 text-sm text-slate-400">
               Deployed on Vercel with Supabase PostgreSQL.
             </p>
           </div>
@@ -136,13 +136,13 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-gray-400">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-400">
             Features
           </p>
           <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
             Built like a real productivity app.
           </h2>
-          <p className="mt-4 text-gray-400">
+          <p className="mt-4 text-slate-400">
             The app combines authentication, database-backed CRUD operations,
             analytics, filtering, and a recruiter-friendly public demo.
           </p>
@@ -162,7 +162,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-lg font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-gray-400">
+                <p className="mt-2 text-sm leading-6 text-slate-400">
                   {feature.description}
                 </p>
               </div>
@@ -171,17 +171,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-white/2">
+      <section className="border-y border-slate-800 bg-slate-900/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-gray-400">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-400">
                 Tech Stack
               </p>
               <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
                 Modern full-stack tools.
               </h2>
-              <p className="mt-4 text-gray-400">
+              <p className="mt-4 text-slate-400">
                 Built with a modern TypeScript stack and deployed as a live
                 production project.
               </p>
@@ -206,7 +206,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold sm:text-4xl">
             Try the public demo first.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+          <p className="mx-auto mt-4 max-w-2xl text-slate-400">
             Demo mode uses sample data, so visitors can explore the dashboard,
             application cards, charts, and workflow without signing up.
           </p>
@@ -221,7 +221,7 @@ export default function Home() {
 
             <Link
               href="/dashboard"
-              className="rounded-lg border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
             >
               Create Account
             </Link>

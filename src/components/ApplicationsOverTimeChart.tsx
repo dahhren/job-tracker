@@ -24,7 +24,7 @@ export default function ApplicationsOverTimeChart({ data }: ApplicationsOverTime
                     <XAxis dataKey="date" />
                     <YAxis allowDecimals={false} />
                     <Tooltip />
-                    <Line type="monotone" dataKey="count" strokeWidth={2} />
+                    <Line type="monotone" dataKey="count" stroke="#06b6d4" strokeWidth={2} />
                 </LineChart>
             </ResponsiveContainer>
         </div>
