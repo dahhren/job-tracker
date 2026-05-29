@@ -82,7 +82,7 @@ export default function Home() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/demo"
-            className="rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-white transition hover:bg-cyan-600"
+            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
           >
             View Demo
           </Link>
@@ -157,7 +157,7 @@ export default function Home() {
                 key={feature.title}
                 className="rounded-2xl border border-white/10 bg-white/3 p-6 transition hover:bg-white/6"
               >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500 text-white">
                   <Icon className="h-5 w-5" />
                 </div>
 
@@ -191,7 +191,7 @@ export default function Home() {
               {techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-200"
+                  className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-200"
                 >
                   {tech}
                 </span>
@@ -202,7 +202,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="rounded-3xl border border-white/10 bg-white/4 p-8 text-center sm:p-12">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center sm:p-12">
           <h2 className="text-3xl font-bold sm:text-4xl">
             Try the public demo first.
           </h2>

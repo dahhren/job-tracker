@@ -26,7 +26,7 @@ export default function DeleteApplicationButton({
 
       <button
         type="submit"
-        className="rounded border px-3 py-1 text-sm text-red-600 hover:bg-red-50"
+        className="rounded border border-red-500/30 px-3 py-1 text-sm text-red-300 hover:bg-red-500/10"
       >
         Delete
       </button>
