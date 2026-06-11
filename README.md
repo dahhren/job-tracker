@@ -28,13 +28,14 @@ JobTracker is a full-stack job application tracking web app that helps users org
 ## Screenshots
 
 ### Homepage
-! [Homepage] (public/screenshots/homepage.png)
+![Homepage](public/screenshots/homepage.png)
 
 ### Demo Dashboard
-! [Homepage] (public/screenshots/demo-dashboard.png)
+![Demo Dashboard](public/screenshots/demo-dashboard.png)
 
 ### Demo Applications
-! [Homepage] (public/screenshots/demo-applications.png)
+![Demo Applications](public/screenshots/demo-applications.png)
+
 
 ## Getting Started
 
