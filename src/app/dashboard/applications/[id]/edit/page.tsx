@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { updateApplication } from "../../actions";
@@ -17,7 +18,11 @@ export default async function EditApplicationPage({
   const { id } = await params;
 
   if (!userId) {
-    return <div className="p-6">You must be signed in.</div>;
+    return (
+      <main className="page-bg min-h-screen p-6">
+        <div className="card-bg rounded-xl p-6">You must be signed in.</div>
+      </main>
+    );
   }
 
   const application = await prisma.jobApplication.findFirst({
@@ -32,97 +37,129 @@ export default async function EditApplicationPage({
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 p-6 text-white">
-    <div className="mx-auto max-w-2xl">
-      <h1 className="text-3xl font-bold">Edit Application</h1>
-
-      <form action={updateApplication} autoComplete="off" className="mt-6 space-y-4">
-        <input type="hidden" name="applicationId" value={application.id} />
-
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Company</label>
-          <input
-            name="company"
-            required
-            defaultValue={application.company}
-            className="mt-1 w-full rounded border p-2"
-            autoComplete="off"
-          />
+    <main className="page-bg min-h-screen p-6">
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-slate-950 dark:text-white">
+            Edit Application
+          </h1>
+          <p className="muted-text mt-1">
+            Update the details for this job application.
+          </p>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Role</label>
-          <input
-            name="role"
-            required
-            defaultValue={application.role}
-            className="mt-1 w-full rounded border border-slate-700 bg-slate-900 p-2 text-white placeholder:text-slate-500"
-            autoComplete="off"
-          />
-        </div>
+        <form
+          action={updateApplication}
+          autoComplete="off"
+          className="card-bg space-y-4 rounded-xl p-6"
+        >
+          <input type="hidden" name="applicationId" value={application.id} />
 
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Location</label>
-          <input
-            name="location"
-            defaultValue={application.location ?? ""}
-            className="mt-1 w-full rounded border border-slate-700 bg-slate-900 p-2 text-white placeholder:text-slate-500"
-            autoComplete="off"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Status</label>
-          <select
-            name="status"
-            defaultValue={application.status}
-            className="mt-1 w-full rounded border border-slate-700 bg-slate-900 p-2 text-white"
-          >
-            <option>Applied</option>
-            <option>Interview</option>
-            <option>Rejected</option>
-            <option>Offer</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Applied Date</label>
-          <div className="mt-1">
-            <DatePickerButton
-              name="appliedDate"
-              defaultValue={application.appliedDate.toISOString().split("T")[0]}
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Company
+            </label>
+            <input
+              name="company"
+              required
+              defaultValue={application.company}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+              autoComplete="off"
             />
           </div>
-        </div>
 
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Job URL</label>
-          <input
-            name="jobUrl"
-            defaultValue={application.jobUrl ?? ""}
-            className="mt-1 w-full rounded border border-slate-700 bg-slate-900 p-2 text-white placeholder:text-slate-500"
-            autoComplete="off"
-          />
-        </div>
+          <div>
+            <label className="soft-text block text-sm font-medium">Role</label>
+            <input
+              name="role"
+              required
+              defaultValue={application.role}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+              autoComplete="off"
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-slate-200">Notes</label>
-          <textarea
-            name="notes"
-            defaultValue={application.notes ?? ""}
-            className="mt-1 w-full rounded border p-2"
-            rows={4}
-            autoComplete="off"
-          />
-        </div>
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Location
+            </label>
+            <input
+              name="location"
+              defaultValue={application.location ?? ""}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+              autoComplete="off"
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="rounded bg-cyan-500 px-4 py-2 text-white hover:bg-cyan-600"
-        >
-          Save Changes
-        </button>
-      </form>
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Status
+            </label>
+            <select
+              name="status"
+              defaultValue={application.status}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+            >
+              <option>Applied</option>
+              <option>Interview</option>
+              <option>Rejected</option>
+              <option>Offer</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Applied Date
+            </label>
+            <div className="mt-1">
+              <DatePickerButton
+                name="appliedDate"
+                defaultValue={application.appliedDate.toISOString().split("T")[0]}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Job URL
+            </label>
+            <input
+              name="jobUrl"
+              defaultValue={application.jobUrl ?? ""}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+              autoComplete="off"
+            />
+          </div>
+
+          <div>
+            <label className="soft-text block text-sm font-medium">
+              Notes
+            </label>
+            <textarea
+              name="notes"
+              defaultValue={application.notes ?? ""}
+              className="input-bg mt-1 w-full rounded p-2 outline-none transition focus:border-cyan-500"
+              rows={4}
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+            <button
+              type="submit"
+              className="rounded bg-cyan-500 px-4 py-2 font-medium text-white transition hover:bg-cyan-600"
+            >
+              Save Changes
+            </button>
+
+            <Link
+              href="/dashboard/applications"
+              className="secondary-btn rounded px-4 py-2 text-center font-medium transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
+            >
+              Cancel
+            </Link>
+          </div>
+        </form>
       </div>
     </main>
   );

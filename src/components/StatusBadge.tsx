@@ -13,7 +13,7 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   return (
     <span
       className={`rounded-full px-3 py-1 text-xs font-medium ${
-        styles[status] ?? "bg-slate-800 text-slate-300 border border-slate-700"
+        styles[status] ?? "bg-slate-800 soft-text border border-slate-700"
       }`}
     >
       {status}

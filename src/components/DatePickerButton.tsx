@@ -33,13 +33,13 @@ export default function DatePickerButton({
         type="date"
         defaultValue={defaultValue}
         autoComplete="off"
-        className="w-full rounded border bg-black px-3 py-2 text-white"
+        className="input-bg w-full rounded px-3 py-2 outline-none transition focus:border-cyan-500"
       />
 
       <button
         type="button"
         onClick={openDatePicker}
-        className="rounded border px-4 py-2 text-sm font-medium transition hover:bg-white/10"
+        className="secondary-btn rounded px-4 py-2 text-sm font-medium transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
       >
         Calendar
       </button>

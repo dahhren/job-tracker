@@ -36,8 +36,7 @@ const features = [
   },
   {
     title: "Secure Accounts",
-    description:
-      "Protected user dashboards powered by Clerk authentication.",
+    description: "Protected user dashboards powered by Clerk authentication.",
     icon: Lock,
   },
   {
@@ -62,18 +61,18 @@ const techStack = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-white text-black dark:bg-slate-950 dark:text-white">
       <section className="mx-auto flex max-w-6xl flex-col items-center px-6 py-24 text-center sm:py-32">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-sm text-cyan-700 dark:border-cyan-500/20 dark:bg-cyan-500/10 dark:text-cyan-300">
           <Sparkles className="h-4 w-4" />
           Full-stack job application tracker
         </div>
 
-        <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
+        <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-6xl">
           Organize your job search with a clean, full-stack tracker.
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-300">
+        <p className="muted-text mt-6 max-w-2xl text-lg leading-8">
           JobTracker helps users save applications, update statuses, search and
           filter opportunities, view dashboard analytics, and manage their job
           search from one secure dashboard.
@@ -82,14 +81,14 @@ export default function Home() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/demo"
-            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
+            className="rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-white transition hover:bg-cyan-600"
           >
             View Demo
           </Link>
 
           <Link
             href="/dashboard"
-            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
+            className="secondary-btn rounded-lg px-6 py-3 font-semibold transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
           >
             Open Dashboard
           </Link>
@@ -98,36 +97,42 @@ export default function Home() {
             href="https://github.com/dahhren/job-tracker"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
+            className="secondary-btn rounded-lg px-6 py-3 font-semibold transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
           >
             GitHub Repo
           </a>
         </div>
 
-        <p className="mt-5 text-sm text-slate-400">
+        <p className="muted-text mt-5 text-sm">
           Recruiters can use demo mode without creating an account.
         </p>
       </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/40">
+      <section className="border-y border-slate-200 bg-slate-100/60 dark:border-slate-800 dark:bg-slate-900/40">
         <div className="mx-auto grid max-w-6xl gap-4 px-6 py-10 sm:grid-cols-3">
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
-            <p className="text-3xl font-bold">CRUD</p>
-            <p className="mt-2 text-sm text-slate-400">
+          <div className="card-bg rounded-xl p-6">
+            <p className="text-3xl font-bold text-slate-950 dark:text-white">
+              CRUD
+            </p>
+            <p className="muted-text mt-2 text-sm">
               Create, edit, delete, and update job applications.
             </p>
           </div>
 
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
-            <p className="text-3xl font-bold">Auth</p>
-            <p className="mt-2 text-sm text-slate-400">
+          <div className="card-bg rounded-xl p-6">
+            <p className="text-3xl font-bold text-slate-950 dark:text-white">
+              Auth
+            </p>
+            <p className="muted-text mt-2 text-sm">
               Secure sign-in and protected dashboard routes.
             </p>
           </div>
 
-          <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
-            <p className="text-3xl font-bold">Live</p>
-            <p className="mt-2 text-sm text-slate-400">
+          <div className="card-bg rounded-xl p-6">
+            <p className="text-3xl font-bold text-slate-950 dark:text-white">
+              Live
+            </p>
+            <p className="muted-text mt-2 text-sm">
               Deployed on Vercel with Supabase PostgreSQL.
             </p>
           </div>
@@ -136,13 +141,13 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <p className="muted-text text-sm font-semibold uppercase tracking-wide">
             Features
           </p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold text-slate-950 dark:text-white sm:text-4xl">
             Built like a real productivity app.
           </h2>
-          <p className="mt-4 text-slate-400">
+          <p className="muted-text mt-4">
             The app combines authentication, database-backed CRUD operations,
             analytics, filtering, and a recruiter-friendly public demo.
           </p>
@@ -155,14 +160,16 @@ export default function Home() {
             return (
               <div
                 key={feature.title}
-                className="rounded-2xl border border-white/10 bg-white/3 p-6 transition hover:bg-white/6"
+                className="card-bg rounded-2xl p-6 transition hover:bg-slate-50 dark:hover:bg-slate-800/60"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500 text-white">
                   <Icon className="h-5 w-5" />
                 </div>
 
-                <h3 className="text-lg font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">
+                <h3 className="text-lg font-semibold text-slate-950 dark:text-white">
+                  {feature.title}
+                </h3>
+                <p className="muted-text mt-2 text-sm leading-6">
                   {feature.description}
                 </p>
               </div>
@@ -171,17 +178,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/40">
+      <section className="border-y border-slate-200 bg-slate-100/60 dark:border-slate-800 dark:bg-slate-900/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+              <p className="muted-text text-sm font-semibold uppercase tracking-wide">
                 Tech Stack
               </p>
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold text-slate-950 dark:text-white sm:text-4xl">
                 Modern full-stack tools.
               </h2>
-              <p className="mt-4 text-slate-400">
+              <p className="muted-text mt-4">
                 Built with a modern TypeScript stack and deployed as a live
                 production project.
               </p>
@@ -191,7 +198,7 @@ export default function Home() {
               {techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-200"
+                  className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
                 >
                   {tech}
                 </span>
@@ -202,11 +209,11 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center sm:p-12">
-          <h2 className="text-3xl font-bold sm:text-4xl">
+        <div className="card-bg rounded-3xl p-8 text-center sm:p-12">
+          <h2 className="text-3xl font-bold text-slate-950 dark:text-white sm:text-4xl">
             Try the public demo first.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-400">
+          <p className="muted-text mx-auto mt-4 max-w-2xl">
             Demo mode uses sample data, so visitors can explore the dashboard,
             application cards, charts, and workflow without signing up.
           </p>
@@ -214,14 +221,14 @@ export default function Home() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/demo"
-              className="rounded-lg bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+              className="rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-white transition hover:bg-cyan-600"
             >
               View Demo
             </Link>
 
             <Link
               href="/dashboard"
-              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
+              className="secondary-btn rounded-lg px-6 py-3 font-semibold transition hover:border-cyan-500/50 hover:bg-cyan-500/10"
             >
               Create Account
             </Link>

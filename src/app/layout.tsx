@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { ClerkProvider } from "@clerk/nextjs";
 import AppToaster from "@/components/AppToaster";
+import ThemeProvider from "@/components/ThemeProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "Job Tracker | Full-Stack Job Application Tracker",
-  description: "Track your job applications with authentication, analytics, a public demo mode and more.",
+  title: "JobTracker | Full-Stack Job Application Tracker",
+  description:
+    "Track job applications with authentication, analytics, search, filtering, sorting, and a public demo mode.",
 };
 
 export default function RootLayout({
@@ -16,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body>
-          <Navbar />
-          {children}
-          <AppToaster />
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <AppToaster />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
